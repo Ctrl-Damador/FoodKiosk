@@ -78,10 +78,30 @@ const KioskProvider = ({children}) => {
     }
 
     
-    const placeOrder = e => {
-        e.preventDefault()
+    const placeOrder = async (e) => {
+        e.preventDefault();
+    
+        try {
+            const orderString = JSON.stringify(order); // Convierte el objeto order a cadena
+            const { data } = await axios.post('/api/orders', { order: orderString, name, total, date: Date.now().toString() });
+            console.log(data);
 
-    }
+            //Resetear la app 
+            setCategoryCurrent(categories[0])
+            setOrder([])
+            setName('')
+            setTotal(0)
+
+            toast.success('Pedido Realizado Correctamente')
+
+            setTimeout(() => {
+                router.push('/')
+            }, 3000)
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return(
         <KioskContext.Provider
