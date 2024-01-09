@@ -14,8 +14,8 @@ export default function AdminLayout({ children, page }) {
       <div className="md:flex">
             <aside className="md:w-4/12 xl:w-1/4 2xl:w-1/5 py-5">
                 <Image
-                    width={300}
-                    height={100}
+                    width={400}
+                    height={200}
                     src="/assets/img/logo.svg"
                     alt="imagen logotipo"
                 />

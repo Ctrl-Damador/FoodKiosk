@@ -82,8 +82,7 @@ const KioskProvider = ({children}) => {
         e.preventDefault();
     
         try {
-            const orderString = JSON.stringify(order); // Convierte el objeto order a cadena
-            const { data } = await axios.post('/api/orders', { order: orderString, name, total, date: Date.now().toString() });
+            const { data } = await axios.post('/api/orders', { order, name, total, date: Date.now().toString() });
             console.log(data);
 
             //Resetear la app 
